@@ -1,16 +1,43 @@
+
 body {
   font-family: 'poppins', sans-serif;
   background-color: #202020;
   color: #eee;
   text-align: center;
 }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 2px;
+  border-radius: 30px;
 
+}
+::-webkit-scrollbar-thumb {
+  background:#b621fe;
+  border-radius: 10px;
+  width: 8px;
+  height: 2px;
+}
+@keyframes typing {
+from {
+    width: 0;
+}
+}
+
+
+.typing {
+text-align: center;
+padding-top: 10px;
+width: 100%;
+animation: typing 8s steps(60), blink .8s step-end infinite alternate;
+white-space: nowrap;
+overflow: hidden;
+}
 h1 {
   margin-top: 10px;
 }
 .topnav {
   overflow: hidden;
-  background-color: transparent;
+  background-color:#202020;
   margin: 1%;
 }
 
@@ -38,7 +65,12 @@ h1 {
     display:block;
   }
 }
-
+@media (max-width: 495px){
+  .h1_1{
+    font-size: 35px;
+    margin-bottom: 70px;
+    margin: auto;
+  }}
 @media screen and (max-width: 1000px) {
   .topnav.responsive {
     position: relative;
