@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="radar.css">
-    <title>Asteroid detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Object detection</title>
     </head>
   <style>
     body {
@@ -58,25 +59,53 @@
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 </div>
-<div class="typing head"> <h1 style="margin-top: 20px;font-size: 30px;" class="h1_1">Asteroids Detection</h1></div>
+<h1 style="margin-top: 20px;font-size: 30px;" ">Object Detection</h1>
 
 
 	<div class="radar-container" width="500" height="500">
 		<canvas id="radar" width="500" height="500"></canvas>
 	</div>
 <section id="database">
+    <center>
 	<div class="database-container">
-		<h2>Space Objects Database</h2>
-		<table id="blip-list", style="margin: 20px;">
+		<h2 style="margin-top: 30px;">Space Objects Database</h2>
+		<table id="blip-list", style="margin: 50px;">
+            <th>Type</th>
+            <th>X-Axis</th>
+            <th>Y-Axis</th>
 				<!-- Table content will be populated by JavaScript -->
 		</table>
 	</div>
+    </center>
 </section>
-<footer class="footer" style="background-color: #663dff;">
+<footer class="footer" style="background-color: #b621fe;">
 	<div class="footer-content">
 	  <p class="footerText">&copy; Delhi Public School Noida</p>
 	</div>
   </footer>
+  <button onclick="topFunction()" id="top" title="Go to top" style="background-color: #b621fe;"><i class="fa-solid fa-chevron-up"></i></button>
+  <script>
+    feather.replace();
+  </script>
+ <script>
+    mybutton = document.getElementById("top");
+  
+  
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  
+  function topFunction() {
+    document.body.scrollTop = 0; 
+    document.documentElement.scrollTop = 0; 
+  }
+  </script>
 </body>
 <script src="radar.js"></script>
 
