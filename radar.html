@@ -119,7 +119,7 @@ function main() {
 
 
   // Update balls. Add balls if under 200 exist
-  if (Ball.all.length < 3){
+  if (Ball.all.length < 15){
     for(var i = 0; i < 1; i++){
       var ball = new Ball(Math.random()*400,Math.random()*400,2);
       ball.vx = Math.random() / 10;
