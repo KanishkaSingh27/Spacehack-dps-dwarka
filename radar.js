@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const blipList = document.getElementById('blip-list');
 
     // New Radar Size
-    const radarSize = 150; // Radius of the radar circle (half of the canvas size)
+    const radarSize = 200; // Radius of the radar circle (half of the canvas size)
     const canvasSize = radarSize * 2; // Full canvas width/height
 
     canvas.width = canvasSize;
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         y: radarSize,
         length: radarSize,
         angle: 0,
-        speed: Math.PI / 180,
+        speed: Math.PI / 360,
         end: { x: radarSize, y: 0 },
         draw: function() {
             this.angle += this.speed;
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const distanceFromLineEnd = lineDistance(this.end, ball);
                 if (distanceToLine < 1 && distanceFromLineStart < this.length && distanceFromLineEnd < this.length) {
                     const blip = new Blip(ball.x, ball.y, 0.2);
-                    setTimeout(function(){addBlipToTable(blip);}, 200)
+                    addBlipToTable(blip);
                 }
             });
 
