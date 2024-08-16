@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    localStorage.clear();
+   
     const canvas = document.getElementById("radar");
     const ctx = canvas.getContext('2d');
     const blipList = document.getElementById('blip-list');
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         y: radarSize,
         length: radarSize,
         angle: 0,
-        speed: Math.PI / 360,
+        speed: Math.PI / 180,
         end: { x: radarSize, y: 0 },
         draw: function() {
             this.angle += this.speed;
@@ -102,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function() {
             <td>${blip.type}</td>
             <td>${blip.x.toFixed(2)}</td>
             <td>${blip.y.toFixed(2)}</td>
-            <td>${blip.t.toFixed(2)}</td>
         `;
 
         blipList.appendChild(row);
