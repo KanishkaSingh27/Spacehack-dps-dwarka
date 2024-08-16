@@ -1,9 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Initial resource levels with random values between 50% and 100%
-    let oxygenLevel = Math.random() * 50 + 50;
-    let waterLevel = Math.random() * 50 + 50;
-    let fuelLevel = Math.random() * 50 + 50;
+    console.log(localStorage.getItem('oxygenData'));
+
+    console.log(localStorage.getItem('waterData'));
+
+    console.log(localStorage.getItem('fuelData'));
+
 
     // Base consumption rates (percentage per second)
     const baseOxygenConsumptionRate = 0.5;
@@ -24,47 +26,107 @@ document.addEventListener("DOMContentLoaded", function() {
     const fuelBtn = document.getElementById('fuel-btn');
 
     // Data for Chart.js
-    const labels = [];
-    const oxygenData = [];
-    const waterData = [];
-    const fuelData = [];
+    let labels = [];
+    let oxygenData = [];
+    let waterData = [];
+    let fuelData = [];
+    
+
+    // Check if data exists in local storage
+
+    if (localStorage.getItem('labels')) {
+
+        labels = JSON.parse(localStorage.getItem('labels'));
+
+        oxygenData = JSON.parse(localStorage.getItem('oxygenData'));
+
+        waterData = JSON.parse(localStorage.getItem('waterData'));
+
+        fuelData = JSON.parse(localStorage.getItem('fuelData'));
+
+    }
+    console.log(oxygenData)
+
+        // Initial resource levels with random values between 50% and 100%
+        oxygenLevel = parseFloat(oxygenData[oxygenData.length - 1]) || Math.random() * 50 + 50;
+        waterLevel = parseFloat(waterData[waterData.length - 1]) || Math.random() * 50 + 50;
+        fuelLevel = parseFloat(fuelData[fuelData.length - 1]) || Math.random() * 50 + 50;
 
     // Setup Chart.js
+
     const ctx = document.getElementById('resourceChart').getContext('2d');
+
     const resourceChart = new Chart(ctx, {
+
         type: 'line',
+
         data: {
+
             labels: labels,
+
             datasets: [{
+
                 label: 'Oxygen Level',
+
                 data: oxygenData,
+
                 borderColor: 'rgba(75, 192, 192, 1)',
+
                 borderWidth: 2,
+
                 fill: false
+
             },
+
             {
+
                 label: 'Water Level',
+
                 data: waterData,
+
                 borderColor: 'rgba(54, 162, 235, 1)',
+
                 borderWidth: 2,
+
                 fill: false
+
             },
+
             {
+
                 label: 'Fuel Level',
+
                 data: fuelData,
+
                 borderColor: 'rgba(255, 99, 132, 1)',
+
                 borderWidth: 2,
+
                 fill: false
+
             }]
+
         },
+
         options: {
+            animation: {
+                duration:150,
+            },
+
             scales: {
+
                 y: {
+
                     beginAtZero: true,
+
                     max: 100
+
                 }
+
             }
+
         }
+
     });
 
     // Function to get a random fluctuation that can be positive or negative
@@ -126,6 +188,27 @@ document.addEventListener("DOMContentLoaded", function() {
         waterData.push(waterLevel.toFixed(1));
         fuelData.push(fuelLevel.toFixed(1));
 
+        if (labels.length > 30) {
+
+            labels.shift(); // remove the oldest entry
+          
+            oxygenData.shift();
+          
+            waterData.shift();
+          
+            fuelData.shift();
+          
+          }
+
+          // Store only the new entry in local storage
+          localStorage.setItem('labels', JSON.stringify(labels.slice(-30))); // store only the last 30 entries
+
+          localStorage.setItem('oxygenData', JSON.stringify(oxygenData.slice(-30)));
+          
+          localStorage.setItem('waterData', JSON.stringify(waterData.slice(-30)));
+          
+          localStorage.setItem('fuelData', JSON.stringify(fuelData.slice(-30)));
+        
         // Update the chart
         resourceChart.update();
 
@@ -135,25 +218,104 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to check for critical levels and trigger alerts
     function checkCriticalLevels() {
-        if (oxygenLevel < 20) {
-            oxygenBar.classList.add('low');
-            alert("Warning: Oxygen level critical!");
-        }
-        if (waterLevel < 20) {
-            waterBar.classList.add('low');
-            alert("Warning: Water level critical!");
-        }
-        if (fuelLevel < 20) {
-            fuelBar.classList.add('low');
-            alert("Warning: Fuel level critical!");
-        }
-    }
 
+        if (oxygenLevel < 20) {
+      
+          showNotification("Warning: Oxygen level critical!", "error");
+      
+        }
+      
+        if (waterLevel < 20) {
+      
+          showNotification("Warning: Water level critical!", "error");
+      
+        }
+      
+        if (fuelLevel < 20) {
+      
+          showNotification("Warning: Fuel level critical!", "error");
+      
+        }
+      
+      }
     // Function to add resource levels
     function addResource(resource, amount) {
         resource += amount;
         if (resource > 100) resource = 100;
         return resource;
+    }
+
+    // Add a function to show notifications
+
+    function showNotification(message, type) {
+
+        const notificationContainer = document.getElementById("notifications");
+    
+        let existingNotification = null;
+    
+    
+        // Check if a notification for the same resource is already being shown
+    
+        for (const notification of notificationContainer.children) {
+    
+            if (notification.textContent === message) {
+    
+                existingNotification = notification;
+    
+                break;
+    
+            }
+    
+        }
+    
+    
+        if (existingNotification) {
+    
+            // Update the existing notification
+    
+            existingNotification.className = `notification ${type}`;
+    
+            existingNotification.textContent = message;
+    
+        } else {
+    
+            // Create a new notification
+    
+            const notification = document.createElement("div");
+    
+            notification.className = `notification ${type}`;
+    
+            notification.textContent = message;
+    
+            notificationContainer.appendChild(notification);
+    
+        }
+    
+    
+        notificationContainer.style.display = "block";
+    
+        setTimeout(() => {
+    
+            if (existingNotification) {
+    
+                existingNotification.remove();
+    
+            } else {
+    
+                notification.remove();
+    
+            }
+    
+            if (notificationContainer.childElementCount === 0) {
+    
+                notificationContainer.style.display = "none";
+    
+            }
+    
+        }, 3000);
+    
+        console.log(`Showing notification: ${message}`);
+    
     }
 
     // Event listeners for the buttons
