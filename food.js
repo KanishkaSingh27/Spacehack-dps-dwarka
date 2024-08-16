@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <td>${food.expiry}</td>
                 <td>
                     <button class="custom-btn btn-6" onclick="removeFoodQuantity(${index})" >Remove Quantity</button>
-                    <button class="custom-btn btn-6" onclick="removeFoodItem(${index})">Remove Item</button>
+                    <button class="custom-btn btn-6" onclick="removeFoodItem(${index})"">Remove Item</button>
                 </td>
             `;
 
