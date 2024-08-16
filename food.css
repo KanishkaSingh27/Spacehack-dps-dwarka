@@ -31,7 +31,7 @@ nav a {
     color: #bbb;
     text-decoration: none;
     padding: 10px 20px;
-    background-color: #2a2a2a;
+    background-color: #202020;
     border-radius: 5px;
     margin: 0 10px;
     transition: background-color 0.3s, color 0.3s;
@@ -39,7 +39,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #444;
+    background-color: #202020;
     color: #fff;
 }
 
