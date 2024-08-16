@@ -206,8 +206,8 @@ nav a:hover {
   background-color: #f0f0f0;
   height: 100px;
   width: 100%;
-  margin-top: 10px;
-  padding: 5px;
+  margin-top: 50px;
+  padding: 50px;
   box-sizing: border-box;
 }
 .custom-btn {
