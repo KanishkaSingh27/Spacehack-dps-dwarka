@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-   
+    localStorage.clear();
     const canvas = document.getElementById("radar");
     const ctx = canvas.getContext('2d');
     const blipList = document.getElementById('blip-list');
