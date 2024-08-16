@@ -18,32 +18,34 @@
             <a href="index.html">Home</a>
             <a href="food.html">Food Management</a>
             <a href="help.html">Help</a>
-            <a href="radar.html">radar</a>
+            <a href="radar.html">Radar</a>
         </nav>
         <br>
     </header>
     
     <div id="dashboard">
-        <div class="resource">
+        <div class="resource", style="margin-right: 20px; margin-bottom: 20px">
             <h2>Oxygen</h2>
             <div id="oxygen-bar" class="resource-bar"></div>
             <p id="oxygen-level">Level: 100%</p>
             <button id="oxygen-btn" class="custom-btn btn-6">Add Oxygen</button>
         </div>
-        <div class="resource">
+
+        <div class="resource", style="margin-right: 20px; margin-bottom: 20px">
             <h2>Water</h2>
             <div id="water-bar" class="resource-bar"></div>
             <p id="water-level">Level: 100%</p>
             <button id="water-btn"  class="custom-btn btn-6">Add Water</button>
         </div>
-        <div class="resource">
+
+        <div class="resource", style="margin-right: 20px; margin-bottom: 20px">
             <h2>Fuel</h2>
             <div id="fuel-bar" class="resource-bar"></div>
             <p id="fuel-level">Level: 100%</p>
             <button id="fuel-btn" class="custom-btn btn-6">Add Fuel</button>
         </div>
     </div>
-    
+    <div id="notifications"></div>
     <canvas id="resourceChart"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
