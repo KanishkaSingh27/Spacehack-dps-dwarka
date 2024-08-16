@@ -65,12 +65,7 @@ h1 {
     display:block;
   }
 }
-@media (max-width: 495px){
-  .h1_1{
-    font-size: 35px;
-    margin-bottom: 70px;
-    margin: auto;
-  }}
+
 @media screen and (max-width: 1000px) {
   .topnav.responsive {
     position: relative;
