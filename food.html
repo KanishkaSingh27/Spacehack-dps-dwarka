@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="food.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="937"
@@ -18,14 +19,22 @@
                     console.log("yeah");
                 });
       </script>        
-    <header>
-        <h1>Food Management</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="food.html">Food Management</a>
-            <a href="help.html">Help</a>
-        </nav>
-    </header>
+   <section id="home">
+    <div class="header">
+
+    <div class="inner-header flex">
+
+<div class="topnav" id="myTopnav">
+<img src="logo.png" class="logo" width="10px" style="margin-left: 0px;">
+
+
+<a href="radar.html" class="left">Radar</a>
+<a href="help.html" class="left">Help</a>
+<a href="food.html" class="left">Food Manager</a>
+<a href="index.html" class="left">Home</a>
+<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+</div>
     
     <main id="food-management">
         <h2>Manage Your Food Inventory</h2>
@@ -36,7 +45,7 @@
             <input type="number" id="food-quantity" step="0.01" required>
             <label for="food-expiry">Expiry Date:</label>
             <input type="date" id="food-expiry" required>
-            <button type="submit" class="custom-btn btn-6">Add Food Item</button>
+            <button type="submit" class="custom-btn btn-6" style="width: 170px;">Add Food Item</button>
         </form>
         <table id="food-list">
             <!-- Table content will be populated by JavaScript -->
